@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Tugas 2 - Sorting</title>
+        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+
+        <div class="jumbotron">
+            <h1 class="display-4">Tugas 2 sorting</h1>
+            <hr class="my-4">
+            <div class="form-group">
+                <input type="text" class="form-control" value="" id="number" style="width: 50%;">
+            </div>
+            <button class="btn btn-primary" onclick="bilangan_random()">Randomkan Bilangan</button>
+            <button class="btn btn-primary" onclick="urutkan()">Urutkan</button>
+            <div class="form-group pt-4">
+                <input type="text" class="form-control" value="" id="result" style="width: 50%;">
+            </div>
+        </div>
+
+        <script src="vendor/jquery/dist/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    </body>
+
+</html>
+
+<script>
+    var number_in_array;
+    var number_of_array;
+
+    function bilangan_random() {
+        document.getElementById("number").value = ' ';
+        number_of_array = Math.floor(Math.random() * 10);
+        number_in_array = [number_of_array];
+
+        $(document).ready(function () {
+
+            for (var count = 0; count < number_of_array; count++) {
+                randomNumber = Math.floor(Math.random() * 90 + 10);
+                if (count != number_of_array - 1) {
+                    document.getElementById("number").value += randomNumber + ', ';
+                } else {
+                    document.getElementById("number").value += randomNumber;
+                }
+
+                number_in_array[count] = randomNumber;
+            }
+        });
+    }
+
+    function urutkan() {
+        document.getElementById("result").value = number_in_array.sort((a, b) => a - b);
+    }
+</script>
